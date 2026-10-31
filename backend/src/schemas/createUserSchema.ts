@@ -9,3 +9,13 @@ export const createUserSchema = z.object({
       .min(6, { message: "A senha precisa ter pelo menos 6 caracteres." }),
   }),
 });
+
+export const authUserSchema = z.object({
+  body: z.object({
+    email: z.email({ message: "Formato de e-mail iválido." }),
+    password: z
+      .string()
+      .min(6, { message: "A senha é obrigatória." })
+      .min(1, { message: "A senha é obrigatória." }),
+  }),
+});

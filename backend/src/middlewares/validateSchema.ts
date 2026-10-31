@@ -15,7 +15,7 @@ export const validateSchema =
     } catch (error) {
       if (error instanceof ZodError) {
         return res.status(400).json({
-          error: "Erro d evalidação",
+          error: "Erro de validação",
           details: error.issues.map((issue) => ({
             message: issue.message,
           })),
