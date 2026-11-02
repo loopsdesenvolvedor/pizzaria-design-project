@@ -7,6 +7,7 @@ import {
   authUserSchema,
 } from "./schemas/createUserSchema.js";
 import { DetailUserController } from "./controllers/user/DetailUserController.js";
+import { isAuthenticate } from "./middlewares/isAuthenticated.js";
 const router = Router();
 
 // users
@@ -22,6 +23,6 @@ router.post(
   new AuthUserController().handle,
 );
 
-router.get("/me", new DetailUserController().handle);
+router.get("/me", isAuthenticate, new DetailUserController().handle);
 
 export { router };
